@@ -1,7 +1,7 @@
 # 1. Alterações do dataset
 
 Percebi que o dataset tinha alguns erros e campos com caracteres especiais.  
-Tirei os caracteres especiais, substituí os campos **id** por **_id**, pois o mongoDB utiliza _id, e fiz outras alterações para permitir a importação dos datasets no mongoDB.
+Tirei os caracteres especiais, substituí os campos **id** por **_id**, pois o mongoDB utiliza _id, e fiz outras alterações para permitir a importação dos datasets no mongoDB (Por exemplo, o formato do dataset tinha formato de dicionário. Alterei para que tivesse formato de lista).
 Criei tambem dois outros datasets, com base no dataset **[edicoes.json](ex1/database/edicoes.json)**, dataset que resulta da correção do dataset [dataset.json](ex1/database/dataset.json), com a ajuda da script feita em python chamada [gerarDB.py](ex1/database/gerarDB.py).  
 Esta script permite coletar todos os intérpretes, e coletar todos os países, tais como as edições que ele participou e organizações (com os campos que serão necessários futuramente).  
 Estes dois datasets são [paises.json](ex1/database/paises.json) e [interpretes.json](ex1/database/interpretes.json)
