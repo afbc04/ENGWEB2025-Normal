@@ -1,0 +1,46 @@
+extends layout 
+
+block content 
+    .w3-card-4 
+        header.w3-container.w3-indigo
+            h1 Edição #{edicao._id}
+
+        .w3-container 
+            a.w3-button.w3-gray(href="/") Voltar
+
+            ul.w3-ul.w3-card-4(style="width:50%")
+
+                li 
+                    b ID: 
+                    | #{edicao._id}
+                li 
+                    b Ano da edição: 
+                    | #{edicao.anoEdicao}
+                li 
+                    b País Organizador: 
+                    | #{edicao.organizacao}
+                li 
+                    b País Vencedor: 
+                    | #{edicao.vencedor}
+
+        .w3-container.w3-margin-8
+            h3 Lista de Músicas
+            table.w3-table-all.w3-hoverable(style="width:70%")
+                thead
+                    tr.w3-indigo
+                        th Nome da Música
+                        th Intérprete
+                        th País
+                tbody
+                    - if (edicao.musicas && edicao.musicas.length > 0) {
+                        - edicao.musicas.forEach(musica => {
+                            tr
+                                td #{musica.titulo}
+                                td #{musica.interprete}
+                                td #{musica.pais}
+                        - })
+                    - } else {
+                        tr
+                            td(colspan="3") Nenhuma música cadastrada.
+                    - }
+

@@ -1,0 +1,62 @@
+extends layout 
+
+block content 
+    .w3-card-4 
+        header.w3-container.w3-indigo
+            h1 País #{pais._id}
+
+        .w3-container 
+            a.w3-button.w3-gray(href="/") Voltar
+
+            ul.w3-ul.w3-card-4(style="width:50%")
+
+                li 
+                    b Nome: 
+                    | #{pais._id}
+                
+        .w3-container.w3-margin-8
+            h3 Edições que participou
+            table.w3-table-all.w3-hoverable(style="width:70%")
+                thead
+                    tr.w3-indigo
+                        th ID da edição 
+                        th Ano 
+                        th Nome da musica 
+                        th Nome do Intérprete
+                        th Venceu?
+                tbody
+                    - if (pais.participou && pais.participou.length > 0) {
+                        - pais.participou.forEach(ed => {
+                            tr
+                                td 
+                                    a(href=`/${ed._id}`) #{ed._id}
+                                td #{ed.ano}
+                                td #{ed.nome_musica}
+                                td #{ed.interprete}
+                                td #{ed.venceu ? 'Sim' : 'Não'}
+                        - })
+                    - } else {
+                        tr
+                            td(colspan="3") Nenhuma edição encontrada.
+                    - }
+
+        .w3-container.w3-margin-8
+            h3 Edições que organizou
+            table.w3-table-all.w3-hoverable(style="width:70%")
+                thead
+                    tr.w3-indigo
+                        th ID da edição 
+                        th Ano 
+                tbody
+                    - if (pais.organizou && pais.organizou.length > 0) {
+                        - pais.organizou.forEach(ed => {
+                            tr
+                                td 
+                                    a(href=`/${ed._id}`) #{ed._id}
+                                td #{ed.ano}
+                        - })
+                    - } else {
+                        tr
+                            td(colspan="3") Nenhuma edição encontrada.
+                    - }
+
